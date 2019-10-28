@@ -1,0 +1,11 @@
+https://kotlinlang.org/docs/reference/exceptions.html
+
+
+Resumo de Bruce Eckel em "Does Java need Checked Exceptions?
+
+Checked vs Unchecked Exception
+https://www.devmedia.com.br/diferenca-entre-checked-e-unchecked-exceptions-em-java/28908
+
+
+Java's checked exceptions were a mistake (and here's what I would like to do about it)
+http://radio-weblogs.com/0122027/stories/2003/04/01/JavasCheckedExceptionsWereAMistake.html

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    <navigation />
+    Root node do grafo de navegacao e contem 1+ destinos de navegacao
+    do app que podem ser activities e fragments
+
+    appStartDestination -> Ponto de partida do app quando iniciado
+
+-->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        app:startDestination="@+id/home_dest">
+
+    <!--
+        android:id -> Identificador usado como uma referencia para navegacao nesse xml e no codigo.
+        com ele podemos dizer que esse fragment pode ser alcancado por outro fragment atraves
+        do id
+
+        android:name -> Declaracao do nome completo do Fragment (package + className)
+
+        Fragments podem conter <action>, <argument> e <deepLink>
+    -->
+    <fragment
+            android:id="@+id/home_dest"
+            android:name="br.xplorer.studynavcom.views.fragments.HomeFragment"
+            android:label="@string/home"
+            tools:layout="@layout/fragment_home">
+        <action
+                android:id="@+id/next_action"
+                app:destination="@+id/flow_step_one_dest"
+                app:enterAnim="@anim/slide_out_r"
+                app:exitAnim="@anim/slide_out_l" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/flow_step_one_dest"
+            android:name="br.xplorer.studynavcom.views.fragments.FlowStepFragment"
+            tools:layout="@layout/fragment_flow_step_one">
+        <argument
+                android:name="flowStepNumber"
+                android:defaultValue="1"
+                app:argType="integer" />
+        <action
+                android:id="@+id/next_action"
+                app:destination="@+id/flow_step_two_dest"
+                app:enterAnim="@anim/slide_out_r"
+                app:exitAnim="@anim/slide_out_l" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/flow_step_two_dest"
+            android:name="br.xplorer.studynavcom.views.fragments.FlowStepFragment"
+            tools:layout="@layout/fragment_flow_step_two">
+        <argument
+                android:name="flowStepNumber"
+                android:defaultValue="2"
+                app:argType="integer" />
+        <action
+                android:id="@+id/next_action"
+                app:destination="@id/home_dest"
+                app:enterAnim="@anim/slide_out_r"
+                app:exitAnim="@anim/slide_out_l"
+                app:popUpTo="@id/home_dest" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/deep_link_destination"
+            android:name="br.xplorer.studynavcom.views.fragments.FlowStepFragment"
+            tools:layout="@layout/fragment_flow_step_two">
+        <argument
+            android:name="args"
+            android:defaultValue="2"
+            />
+        <deepLink
+            app:uri="codelabs.developers.google.com/codelabs/android-navigation#{args}"
+            />
+    </fragment>
+
+</navigation>
